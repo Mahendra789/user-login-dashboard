@@ -1,0 +1,64 @@
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import '~@angular/material/theming';
+body{
+    margin: 0;
+}
+.mat-form-field-underline{
+    display: none !important;
+  }
+
+
+@include mat-core();
+$primary: mat-palette($mat-deep-purple, 600, 500, 900);
+
+
+.color-primary {
+  color: mat-color($primary);
+}
+
+.mat-tooltip  {
+  white-space: pre-line !important;
+}
+
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #167ac1;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.dashboard{
+  .mat-form-field-appearance-outline .mat-form-field-infix {
+    padding: 0.4em 0 0.7em!important;
+  }
+  
+  .mat-form-field-appearance-fill .mat-form-field-infix {
+    padding: 0.15em 0 0.15em 0 !important;
+  }
+  .mat-form-field-appearance-fill .mat-form-field-flex {
+    padding: .35em .75em .35em .75em !important;
+    margin-top: 5px;
+  }
+  .mat-select-arrow-wrapper {
+    position: relative;
+    top: 5px;
+  }
+  .mat-radio-label-content{
+    padding-left: 4px !important;
+  }
+}
+
+

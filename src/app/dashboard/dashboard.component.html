@@ -1,0 +1,107 @@
+<section class="dashboard">
+    <aside>
+        <div class="filter">
+            <div class="filter-title">
+                <h2>Filter by</h2>
+            </div>
+            <div class="filter-content">
+                <form [formGroup]="filterForm">
+                    <div class="app-input-container">
+                        <h4 class="app-input-label">Book name</h4>
+                        <mat-form-field appearance="outline" floatLabel="never">
+                            <input matInput type="text" formControlName="name" autocomplete="off"
+                                placeholder="Book name">
+                        </mat-form-field>
+                    </div>
+                    <div class="app-input-container">
+                        <h4 class="app-input-label">From</h4>
+                        <div fxLayout="row" fxLayout.lt-md="row" fxLayoutGap="0" fxLayoutGap.lt-md="0">
+                            <mat-form-field class="gl-datepicker" floatLabel="never" appearance="outline">
+                                <input matInput readonly formControlName="fromDate" [max]="filterForm.value.toDate"
+                                    [matDatepicker]="picker1" placeholder="MM/DD/YYYY">
+                                <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                                <mat-datepicker #picker1></mat-datepicker>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <div class="app-input-container">
+                        <h4 class="app-input-label">To</h4>
+                        <div fxLayout="row" fxLayout.lt-md="row" fxLayoutGap="0" fxLayoutGap.lt-md="0">
+                            <mat-form-field class="gl-datepicker" floatLabel="never" appearance="outline">
+                                <input matInput readonly formControlName="toDate" [min]="filterForm.value.fromDate"
+                                    [matDatepicker]="picker2" placeholder="MM/DD/YYYY">
+                                <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                                <mat-datepicker #picker2></mat-datepicker>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <div class="app-input-container">
+                        <h4 class="app-input-label">Price</h4>
+                        <mat-form-field appearance="outline" floatLabel="never">
+                            <input matInput type="number" formControlName="price" min="1" step="1" autocomplete="off"
+                                placeholder="Price">
+                        </mat-form-field>
+                    </div>
+                    <div class="app-input-container">
+                        <h4 class="app-input-label">Rating</h4>
+                        <div class="rating">
+                            <mat-form-field appearance="outline">
+                                <mat-select formControlName="ratingAs" placeholder="Rating as">
+                                    <mat-option *ngFor="let rating of ratingAs" [value]="rating">
+                                        {{rating}}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                            <mat-form-field appearance="outline" floatLabel="never">
+                                <input matInput type="number" [disabled]="!filterForm.value.ratingAs"
+                                    formControlName="rating" min="1" max="5" step="1" autocomplete="off"
+                                    placeholder="Rating">
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <div class="app-input-container">
+                        <h4 class="app-input-label">Availability</h4>
+                        <mat-radio-group aria-label="Select an option" formControlName="availability">
+                            <mat-radio-button color="primary" [value]="true">Yes</mat-radio-button>
+                            <mat-radio-button color="primary" [value]="false">No</mat-radio-button>
+                        </mat-radio-group>
+                    </div>
+                </form>
+                <div class="filter-action">
+                    <button mat-raised-button color="primary" (click)="onApplyClick()">
+                        Apply
+                    </button>
+                    <button mat-raised-button class="mxt-secondary-btn" (click)="onResetClick()">
+                        Reset
+                    </button>
+                </div>
+            </div>
+        </div>
+    </aside>
+    <main>
+        <header>
+            <h2><span>Hello</span> {{email}}</h2>
+            <button mat-icon-button matTooltip="Logout" (click)="logout()">
+                <mat-icon>exit_to_app</mat-icon>
+            </button>
+        </header>
+        <div class="card-holder">
+            <div *ngFor="let book of filteredBookList" class="card-details">
+                <div class="card">
+                    <span>{{book.bookName}}</span>
+                    <mat-icon
+                        matTooltip="Release date : {{book.releaseDate}}&#13;Availability : {{book.availability ? 'Available' : 'Not available'}}"
+                        [matTooltipClass]="'my-tooltip'">info</mat-icon>
+
+                    <span class="author">{{book.authorName}}</span>
+                </div>
+                <div class="card-footer">
+                    <span>{{book.price}} $</span>
+                    <span>
+                        <mat-icon *ngFor="let number of [].constructor(book.rating)">star</mat-icon>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </main>
+</section>

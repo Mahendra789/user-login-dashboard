@@ -1,0 +1,199 @@
+section{
+    font-size: 16px;
+    padding: 10px;
+    text-align: right;
+    background: #eee;
+    display: flex;
+    height: calc(100vh - 20px);
+    aside{
+        width: 250px;
+        background-color: #fff;
+    }
+
+    main{
+        width: calc(100% - 250px);
+        margin-left: 10px;
+
+        header{
+            font-size: 16px;
+            padding: 10px;
+            text-align: right;
+            background-color: #fff;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: end;
+            h2{
+                margin: 0;
+                span{
+                    font-weight: 200;
+                }
+            }
+
+            .mat-icon-button{
+                margin-left: 5px;
+                width: 30px;
+                height: 30px;
+                line-height: 30px;
+                mat-icon{
+                    font-size: 30px;
+                    color: #167ac1;
+                }
+            }
+        }
+
+        .card-holder{
+            display: inline-flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            overflow-y: auto;
+            justify-content: start;
+            height: calc(100vh - 62px);
+            width: 100%;
+
+            .card-details{
+                margin-top: 10px;
+                width: 240px;
+                height: 205px;
+                
+                .card{
+                    display: flex;
+                    align-items: flex-start;
+                    justify-content: space-between;
+                    height: 150px;
+                    position: relative;
+                    color: #fff;
+                    padding: 10px;
+                    border-radius: 2px;
+                    font-size: 16px;
+                    font-weight: 500;
+                    .author{
+                        position: absolute;
+                        right: 10px;
+                        bottom: 10px;
+                        font-weight: 100;
+                    }
+                }
+                .card-footer{
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    font-size: 18px;
+                    padding: 5px;
+                    position: relative;
+    
+                    mat-icon{
+                        font-size: 20px;
+                        color: #f7c000;
+                    }
+                }
+            }
+
+            // .card-details:nth-child(4n) {
+            //     margin-right: 0 !important;
+            // }
+            .card-details:nth-child(n) .card {
+                background-color: #68aeff;
+            }
+            .card-details:nth-child(2n) .card {
+               background-color: #52dfc3;
+            }
+            .card-details:nth-child(3n) .card {
+                background-color: #ffc571;
+            }
+            .card-details:nth-child(4n) .card {
+                background-color: #ff647e;
+            }
+            .card-details:nth-child(5n) .card {
+                background-color: #d56746;
+            }
+        }
+        
+    }
+}
+
+.filter{
+    .filter-title{
+        font-size: 16px;
+        padding: 10px;
+        background-color: #167ac1;
+        padding: 10px;
+        text-align: left;
+        color: #fff;
+        h2{
+            margin: 0;
+            font-weight: 400;
+        }
+    }
+
+    .filter-content{
+        text-align: left;
+        padding-top: 22px;
+        overflow-y: auto;
+        height: calc(100vh - 90px);
+        .app-input-container{
+            padding: 0 10px;
+            margin-top: -5px;
+            .app-input-label {
+                font-weight: 500;
+                margin-bottom: 0px !important;
+                line-height: 14px !important;
+                padding-left: 1px;
+            }
+
+            mat-form-field{
+                width: 100%;
+            }
+
+            .rating{
+                display: flex;
+                align-items: center;
+                mat-form-field{
+                    width: 110px;
+                }
+
+                mat-form-field:first-child{
+                    margin-right: 10px;
+                }
+            }
+
+            mat-radio-group{
+                width: 100%;
+                margin: 4px 0;
+                display: block;
+
+                .mat-radio-button:first-child{
+                    margin-right: 10px;
+                }
+            }
+        }
+
+        .filter-action{
+            width: 100%;
+            text-align: center;
+            margin: 15px 0;
+            border-top: 1px solid #eee;
+            padding-top: 15px;
+
+            button:first-child {
+                margin-right: 10px;
+            }
+            button {
+                width: 100px;
+            }
+        }
+    }
+    
+}
+
+@media only screen and (max-width: 500px) {
+    aside{
+        display: none !important;
+    }
+    main{
+        width: 100% !important;
+        .card-holder{
+            justify-content: center !important;
+        }
+  }
+}
